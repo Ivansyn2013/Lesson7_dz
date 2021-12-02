@@ -14,18 +14,43 @@
 
 
 def size_stat(dir_p):
-    dir_path = 'G:\VirtualBox'
-    size_dict = {100*10**i: 0 for i in range(8)}
+    dir_path = 'C:\Windows'
+    size_dict = {100 * 10 ** i: 0 for i in range(7)}
+    size_list = []
+
     print(dir_path)
+
     for iteam in os.scandir(str(dir_path)):
         if iteam.is_file():
-            print(iteam.name, iteam.stat().st_size, iteam.is_file())
+            # print(iteam.name, iteam.stat().st_size, iteam.is_file())
+            size_list.append(iteam.stat().st_size)
+    size_list.sort()
+    for el in size_list:
+        if el < 100:
+            size_dict[100] += 1
+
+
+        elif 100 < el < 1000:
+            size_dict[1000] += 1
+
+
+        elif 1000 < el < 10000:
+            size_dict[10000] += 1
+
+
+        elif 10000 < el < 1000000:
+            size_dict[100000] += 1
+
+
+        elif 1000000 < el < 10000000:
+            size_dict[10000000] += 1
+
+
+    print(size_dict)
+
 
 if __name__ == '__main__':
     import os
     import sys
 
-    #dir_path = input('Введи путь:')
     exit(size_stat(sys.argv))
-
-
