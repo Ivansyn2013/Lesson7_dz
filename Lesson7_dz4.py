@@ -45,7 +45,6 @@ def size_stat(dir_p):
         elif 1000000 < el < 10000000:
             size_dict[10000000] += 1
 
-
     print(size_dict)
 
 
